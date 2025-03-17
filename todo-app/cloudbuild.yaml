@@ -10,25 +10,23 @@ steps:
     dir: 'todo-app'
     entrypoint: npm
     args: ['run', 'build']
+    secretEnv: ['API_KEY']
     env:
-      - 'NEXT_PUBLIC_API_KEY=${_API_KEY}'
+      - 'NEXT_PUBLIC_API_KEY=${API_KEY}'
 
   # Deploy to App Engine
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['app', 'deploy', '--no-promote']
     dir: 'todo-app'
+    secretEnv: ['API_KEY']
     env:
-      - 'NEXT_PUBLIC_API_KEY=${_API_KEY}'
-
-# Substitution variables with secret
-substitutions:
-  _API_KEY: '' # Default empty value, will be populated from secret
+      - 'NEXT_PUBLIC_API_KEY=${API_KEY}'
 
 # Access secrets from Secret Manager
 availableSecrets:
   secretManager:
     - versionName: projects/${PROJECT_ID}/secrets/API_KEY/versions/latest
-      env: '_API_KEY'
+      env: 'API_KEY'
 
 timeout: '1600s' 
 

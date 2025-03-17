@@ -12,7 +12,7 @@ steps:
     args: ['run', 'build']
     secretEnv: ['API_KEY']
     env:
-      - 'NEXT_PUBLIC_API_KEY=${API_KEY}'
+      - 'NEXT_PUBLIC_API_KEY=$$API_KEY'
 
   # Deploy to App Engine
   - name: 'gcr.io/cloud-builders/gcloud'
@@ -20,7 +20,7 @@ steps:
     dir: 'todo-app'
     secretEnv: ['API_KEY']
     env:
-      - 'NEXT_PUBLIC_API_KEY=${API_KEY}'
+      - 'NEXT_PUBLIC_API_KEY=$$API_KEY'
 
 # Access secrets from Secret Manager
 availableSecrets:

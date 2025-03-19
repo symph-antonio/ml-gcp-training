@@ -1,0 +1,16 @@
+runtime: nodejs22
+
+service: gcp-sql-app
+
+instance_class: F1
+
+automatic_scaling:
+  min_instances: 0
+  max_instances: 5
+
+# Environment variables will be loaded via ENV directly
+# through Google Cloud Console
+
+handlers:
+  - url: /.*
+    script: auto

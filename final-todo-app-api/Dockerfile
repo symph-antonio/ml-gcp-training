@@ -41,7 +41,7 @@ ENV NODE_ENV=production
 USER nodeusr
 
 # Expose the port your app runs on (adjust if needed)
-EXPOSE 3000
+EXPOSE 8080
 
 # Start the application
 CMD ["node", "main.js"]

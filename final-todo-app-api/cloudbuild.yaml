@@ -38,6 +38,7 @@ steps:
       - 'ALLOWED_ORIGINS=${_ALLOWED_ORIGINS}'
       - '--vpc-connector'
       - 'cloud-run-vpc-connector'
+      - '--allow-unauthenticated'
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     args:

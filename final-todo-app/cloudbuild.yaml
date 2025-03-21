@@ -1,0 +1,25 @@
+steps:
+  # Install dependencies
+  - name: 'node:22'
+    dir: 'final-todo-app'
+    entrypoint: npm
+    args: ['ci']
+
+  # Create .env file
+  - name: 'node:22'
+    dir: 'final-todo-app'
+    entrypoint: 'npm'
+    args: ['run', 'create-env', '.env']
+    env:
+      - 'NEXT_PUBLIC_APP_TITLE=${_NEXT_PUBLIC_APP_TITLE}'
+      - 'NEXT_PUBLIC_API_BASE_URL=${_NEXT_PUBLIC_API_BASE_URL}'
+
+  # Deploy to App Engine
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['app', 'deploy']
+    dir: 'final-todo-app'
+
+timeout: '1600s' 
+
+options:
+  logging: CLOUD_LOGGING_ONLY

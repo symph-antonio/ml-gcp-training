@@ -8,6 +8,7 @@ export async function GET() {
     });
     return NextResponse.json(todos);
   } catch (error) {
+    console.error('Error fetching todos:', error);
     return NextResponse.json(
       { error: 'Failed to fetch todos' },
       { status: 500 }
@@ -23,6 +24,7 @@ export async function POST(request: Request) {
     });
     return NextResponse.json(todo);
   } catch (error) {
+    console.error('Error creating todo:', error);
     return NextResponse.json(
       { error: 'Failed to create todo' },
       { status: 500 }

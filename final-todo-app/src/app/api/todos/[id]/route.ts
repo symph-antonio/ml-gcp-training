@@ -13,6 +13,7 @@ export async function PATCH(
     });
     return NextResponse.json(todo);
   } catch (error) {
+    console.error('Error updating todo:', error);
     return NextResponse.json(
       { error: 'Failed to update todo' },
       { status: 500 }
@@ -30,6 +31,7 @@ export async function DELETE(
     });
     return NextResponse.json({ message: 'Todo deleted successfully' });
   } catch (error) {
+    console.error('Error deleting todo:', error);
     return NextResponse.json(
       { error: 'Failed to delete todo' },
       { status: 500 }

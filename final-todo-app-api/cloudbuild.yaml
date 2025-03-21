@@ -38,6 +38,8 @@ steps:
       - 'ALLOWED_ORIGINS=${_ALLOWED_ORIGINS}'
       - '--vpc-connector'
       - 'cloud-run-vpc-connector'
+      - '--add-cloudsql-instances'
+      - '${_CLOUDSQL_INSTANCE}'
       - '--allow-unauthenticated'
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'

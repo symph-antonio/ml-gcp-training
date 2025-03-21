@@ -36,6 +36,8 @@ steps:
       - 'DATABASE_URL=DATABASE_URL:latest'
       - '--set-env-vars'
       - 'ALLOWED_ORIGINS=${_ALLOWED_ORIGINS}'
+      - '--vpc-connector'
+      - 'cloud-run-vpc-connector'
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     args:

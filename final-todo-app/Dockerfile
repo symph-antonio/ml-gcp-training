@@ -22,11 +22,6 @@ WORKDIR /app
 
 # Set environment to production
 ENV NODE_ENV=production
-
-# Set runtime environment variables
-ENV NEXT_PUBLIC_API_KEY=${NEXT_PUBLIC_API_KEY}
-ENV NEXT_PUBLIC_APP_TITLE=${NEXT_PUBLIC_APP_TITLE}
-ENV NEXT_PUBLIC_API_BASE_URL=${NEXT_PUBLIC_API_BASE_URL}
  
 # Copy necessary files from builder
 COPY --from=builder /app/next.config.ts ./

@@ -12,6 +12,8 @@ RUN npm ci
 # Copy the rest of the application
 COPY . .
 
+RUN npm run prisma:generate
+
 # Build the application
 RUN npm run build
 

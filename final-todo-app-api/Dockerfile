@@ -44,5 +44,4 @@ USER nodeusr
 EXPOSE 3000
 
 # Start the application
-RUN npm run prisma:deploy
 CMD ["node", "main.js"]

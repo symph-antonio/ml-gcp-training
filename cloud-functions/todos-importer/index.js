@@ -17,7 +17,16 @@ functions.cloudEvent('todosImporter', async (cloudEvent) => {
   let connection;
   try {
     // Create database connection using connection string
-    connection = await mysql.createConnection(process.env.DATABASE_URL);
+    connection = await mysql.createConnection({
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
+    });
+
+    if (process.env.DB_HOST.startsWith('/cloudsql/')) {
+      connection.options.socketPath = process.env.DB_HOST;
+    }
 
     // Download the file from Cloud Storage
     const bucket = storage.bucket(file.bucket);

@@ -12,6 +12,9 @@ RUN npm ci
 # Copy the rest of the application
 COPY . .
 
+ARG NEXT_PUBLIC_API_KEY
+ENV NEXT_PUBLIC_API_KEY=$NEXT_PUBLIC_API_KEY
+
 # Build the application
 RUN npm run build
 
@@ -24,7 +27,7 @@ WORKDIR /app
 ENV NODE_ENV=production
 
 # Set runtime environment variables
-ENV NEXT_PUBLIC_API_KEY=${NEXT_PUBLIC_API_KEY}
+ENV NEXT_PUBLIC_API_KEY=$NEXT_PUBLIC_API_KEY
  
 # Copy necessary files from builder
 COPY --from=builder /app/next.config.ts ./

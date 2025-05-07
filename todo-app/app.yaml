@@ -1,5 +1,6 @@
 runtime: nodejs22
-service: antonio-todo-app
+service: zach
+
 instance_class: F1
 
 handlers:

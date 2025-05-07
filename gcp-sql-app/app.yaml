@@ -1,6 +1,6 @@
 runtime: nodejs22
 
-service: gcp-sql-app
+service: <name>-gcp-sql-app
 
 instance_class: F1
 
@@ -14,3 +14,6 @@ automatic_scaling:
 handlers:
   - url: /.*
     script: auto
+
+vpc_access_connector:
+  name: projects/ml-training-sandbox-1/locations/asia-southeast1/connectors/cloud-run-vpc-connector
